@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yosopi's Gadgets by P&M</title>
+
+<style>
+:root {
+  --orange: #e8893f;
+  --dark-orange: #c96e2e;
+  --brown: #432819;
+  --text: #493a30;
+  --border: #e8893f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff;
+  color: var(--text);
+}
+
+header {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 14px;
+}
+
+.header-inner {
+  max-width: 850px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  transform: scale(1.8);
+  transform-origin: center;
+}
+
+.brand {
+  flex: 1;
+}
+
+.brand h1 {
+  margin: 0;
+  color: var(--brown);
+  font: bold clamp(17px, 3vw, 25px) Georgia, serif;
+}
+
+.brand p {
+  margin: 3px 0 0;
+  font-size: 11px;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.cart-top,
+.add-btn,
+.quantity button {
+  background: var(--orange);
+  color: #fff;
+  border: 1px solid var(--orange);
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+.cart-top {
+  padding: 9px 12px;
+}
+
+.cart-top:hover,
+.add-btn:hover,
+.quantity button:hover {
+  background: var(--dark-orange);
+}
+
+main {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 12px;
+}
+
+.intro {
+    text-align: center;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.intro h2 {
+    text-align: center;
+}
+
+.intro p {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.intro {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 13px;
+  margin-bottom: 13px;
+}
+
+.intro h2 {
+  color: var(--brown);
+  font: bold 20px Georgia, serif;
+  margin: 0 0 5px;
+}
+
+.intro p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.section {
+  margin-bottom: 22px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+.product {
+  min-width: 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 7px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 7px #6d41100c;
+}
+
+.product-image,
+.image-placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 125px;
+  object-fit: contain;
+  border-radius: 7px;
+  background: #fff;
+}
+
+.image-placeholder {
+  color: #947e68;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 10px;
+}
+
+.product h3 {
+  font-size: 12px;
+  color: var(--brown);
+  margin: 6px 0 4px;
+  line-height: 1.3;
+}
+
+.price-list {
+  font-size: 10px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.colors {
+  font-size: 9px;
+  line-height: 1.4;
+  margin: 3px 0 5px;
+}
+
+.product label {
+  display: block;
+  font-size: 10px;
+  font-weight: bold;
+  margin: 5px 0 3px;
+}
+
+.product select {
+  width: 100%;
+  padding: 6px 4px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--text);
+  font-size: 10px;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 6px 0;
+}
+
+.quantity button {
+  width: 25px;
+  height: 25px;
+  font-size: 12px;
+}
+
+.quantity span {
+  flex: 1;
+  text-align: center;
+  font-size: 11px;
+}
+
+.add-btn {
+  width: 100%;
+  padding: 8px 4px;
+  font-size: 10px;
+  margin-top: auto;
+}
+
+.cart-panel {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 18px;
+  background: #fff;
+}
+
+.cart-panel h2 {
+  margin: 0 0 12px;
+  color: var(--brown);
+  font: bold 20px Georgia, serif;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart-item img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 6px;
+}
+
+.cart-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cart-info strong {
+  display: block;
+  font-size: 12px;
+}
+
+.cart-info small {
+  display: block;
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+.cart-controls {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.cart-controls button {
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 5px;
+  padding: 3px 7px;
+  font-size: 11px;
+}
+
+.cart-controls .remove {
+  color: #a43c2b;
+  border: 0;
+  background: transparent;
+}
+
+.empty {
+  color: #8a7563;
+  font-size: 12px;
+  padding: 10px 0;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--brown);
+  margin: 14px 0;
+}
+
+.customer-title {
+  font-size: 14px;
+  color: var(--brown);
+  margin: 12px 0 8px;
+}
+
+.customer-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.customer-fields label {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.customer-fields input {
+  width: 100%;
+  margin-top: 5px;
+  padding: 9px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 12px;
+  background: #fff;
+}
+
+.payment-box {
+  margin-top: 12px;
+  padding: 11px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.payment-box label {
+  display: block;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.payment-box input {
+  width: 100%;
+  padding: 9px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  margin-top: 5px;
+  font-size: 13px;
+  background: #fff;
+}
+
+.payment-result {
+  margin: 9px 0 0;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.message {
+  color: #a43c2b;
+  font-size: 11px;
+  margin-top: 7px;
+  min-height: 14px;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.action-btn {
+  border: 1px solid var(--orange);
+  background: #fff;
+  color: var(--brown);
+  border-radius: 7px;
+  padding: 10px 7px;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.action-btn:hover {
+  background: #fff0dc;
+}
+
+footer {
+  text-align: center;
+  color: #8a7563;
+  padding: 17px;
+  font-size: 10px;
+}
+
+#receipt {
+  display: none;
+}
+
+@media print {
+    @page {
+        size: 80mm auto;
+        margin: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+
+    /* Hide everything except the receipt */
+    body * {
+        visibility: hidden;
+    }
+
+    #receipt,
+    #receipt * {
+        visibility: visible;
+    }
+
+    #receipt {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 72mm;
+        margin: 0;
+        padding: 4mm;
+        box-sizing: border-box;
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        color: black;
+    }
+
+    #receipt h2,
+    #receipt p {
+        text-align: center;
+        margin: 4px 0;
+    }
+
+    #receipt hr {
+        border: none;
+        border-top: 1px dashed black;
+        margin: 8px 0;
+    }
+}
+
+@media print {
+  @page {
+    size: 80mm auto;
+    margin: 0;
+  }
+
+  body {
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    color: #000;
+    font-family: "Courier New", monospace;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  #receipt,
+  #receipt * {
+    visibility: visible !important;
+  }
+
+  #receipt {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80mm;
+    padding: 4mm;
+    font-size: 11px;
+    line-height: 1.35;
+    color: #000;
+  }
+
+  #receipt h2 {
+    text-align: center;
+    font-size: 15px;
+    margin: 0 0 3px;
+  }
+
+  #receipt p {
+    margin: 3px 0;
+  }
+
+  .receipt-center {
+    text-align: center;
+  }
+
+  .receipt-line {
+    border-top: 1px dashed #000;
+    margin: 7px 0;
+  }
+
+  .receipt-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+  }
+
+  .receipt-item {
+    margin: 5px 0;
+  }
+
+  .receipt-item-name {
+    font-weight: bold;
+  }
+
+  .receipt-total {
+    font-weight: bold;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 650px) {
+  main {
+    max-width: 460px;
+    padding: 9px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .product-image,
+  .image-placeholder {
+    max-height: 110px;
+  }
+
+  .product {
+    padding: 6px;
+  }
+}
+
+@media (max-width: 350px) {
+  main {
+    padding: 6px;
+  }
+
+  .product-grid {
+    gap: 5px;
+  }
+
+  .product h3 {
+    font-size: 11px;
+  }
+
+  .product select {
+    font-size: 9px;
+  }
+
+  .brand h1 {
+    font-size: 15px;
+  }
+
+  .logo {
+    width: 43px;
+    height: 43px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <img class="logo" src="yosopi-logo.png"
+      alt="Yosopi's Gadgets logo">
+
+    <div class="brand">
+      <h1>Yosopi’s Gadgets</h1>
+      <p>by Pia & Mark · EST. 2023</p>
+    </div>
+
+    <button class="cart-top" type="button" onclick="goToCart()">
+      🛒 Cart (<span id="cart-count">0</span>)
+    </button>
+  </div>
+</header>
+
+<main>
+  <div class="intro">
+    <h2>Upgrade your tech today with Yosopi's Gadgets by P&M!</h2>
+    <p>Enjoy complete inclusions with every unit, plus a FREE 20W Power Adapter and 3rd Generation AirPods!</p>
+    <p>Enjoy a 1-Year Warranty Upon Activation.</p>
+  </div>
+
+  <section class="section">
+    <div class="product-grid" id="new-grid"></div>
+  </section>
+
+  <section class="cart-panel" id="cart">
+    <h2>🛒 Your Order</h2>
+    <div id="cart-items"></div>
+
+    <div class="total-row">
+      <span>Total</span>
+      <span id="cart-total">₱0.00</span>
+    </div>
+
+    <h3 class="customer-title">Customer Details</h3>
+
+    <div class="customer-fields">
+      <label for="customer-name">
+        Customer name
+        <input id="customer-name" type="text"
+          maxlength="40" placeholder="Enter full name">
+      </label>
+
+      <label for="customer-date">
+        Date
+        <input id="customer-date" type="date">
+      </label>
+    </div>
+
+    <div class="payment-box">
+      <label for="payment">Cash received (₱)</label>
+      <input id="payment" type="number" min="0"
+        step="0.01" placeholder="Enter cash received"
+        oninput="calculateChange()">
+
+      <p class="payment-result" id="change-result">
+        Change: ₱0.00
+      </p>
+
+      <div class="message" id="message" role="status"></div>
+    </div>
+
+    <div class="actions">
+      <button class="action-btn" type="button"
+        onclick="calculateChange()">
+        💵 Calculate Change
+      </button>
+
+      <button class="action-btn" type="button"
+        onclick="printReceipt()">
+        🖨️ Print Receipt
+      </button>
+
+      <button class="action-btn" type="button"
+        onclick="clearOrder()">
+        🗑️ Clear Order
+      </button>
+    </div>
+  </section>
+</main>
+
+<footer>Yosopi’s Gadgets by P&M · EST. 2023</footer>
+
+<div id="receipt">
+  <h2>YOSOPI'S GADGETS</h2>
+  <p class="receipt-center">by P&M</p>
+  <p class="receipt-center">EST. 2023</p>
+
+  <div class="receipt-line"></div>
+
+  <p id="receiptCustomer"></p>
+  <p id="receiptDate"></p>
+
+  <div class="receipt-line"></div>
+  <div id="receiptItems"></div>
+  <div class="receipt-line"></div>
+
+  <div class="receipt-row receipt-total">
+    <span>TOTAL</span>
+    <span id="receiptTotal"></span>
+  </div>
+
+  <div class="receipt-row">
+    <span>Cash</span>
+    <span id="receiptCash"></span>
+  </div>
+
+  <div class="receipt-row">
+    <span>Change</span>
+    <span id="receiptChange"></span>
+  </div>
+
+  <div class="receipt-line"></div>
+
+  <p class="receipt-center">Thank you for your trust and purchase!</p>
+  <p class="receipt-center">Please come again.</p>
+</div>
+
+<script>
+// ==============================================
+// PRODUCT LIST
+// Edit image links and prices in this section.
+// Prices use centavos.
+// Example: ₱37,999.00 = 3799900
+// ==============================================
+
+const brandNew = [
+  {
+    name: "iPhone 15",
+    image: "15.jpg",
+    colors: ["Black", "Blue", "Green", "Yellow", "Pink"],
+    storage: [
+      ["128GB", 3949900]
+    ]
+  },
+  {
+    name: "iPhone 16",
+    image: "16.jpg",
+    colors: ["Black", "White", "Ultramarine", "Teal", "Pink"],
+    storage: [
+      ["128GB", 4499900]
+    ]
+  },
+  {
+    name: "iPhone 17",
+    image: "17.jpg",
+    colors: ["Black", "White", "Sage", "Mist Blue", "Lavender"],
+    storage: [
+      ["256GB", 5699900]
+    ]
+  },
+  {
+    name: "iPhone 17 Pro",
+    image: "17-pro.jpg",
+    colors: ["Cosmic Orange", "Deep Blue", "Silver"],
+    storage: [
+      ["256GB", 7249900]
+    ]
+  },
+  {
+    name: "iPhone 17 Pro Max",
+    image: "17-pro-max.jpg",
+    colors: ["Cosmic Orange", "Deep Blue", "Silver"],
+    storage: [
+      ["256GB", 7799900]
+    ]
+  },
+  {
+    name: "iPad A16 11th Gen",
+    image: "ipad-a16.jpg",
+    colors: ["Blue", "Pink", "Yellow", "Silver"],
+    storage: [
+      ["128GB", 2949900]
+    ]
+  }
+];
+
+let cart = [];
+let quantities = {};
+
+function money(cents) {
+  return "₱" + (cents / 100).toLocaleString("en-PH", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[character]);
+}
+
+// DISPLAY PRODUCTS
+function renderProducts() {
+  renderGroup(brandNew, "new-grid", "new");
+}
+
+function renderGroup(products, containerId, group) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+
+  products.forEach((product, index) => {
+    const key = group + "-" + index;
+
+    if (!quantities[key]) {
+      quantities[key] = 1;
+    }
+
+    const imageHTML = product.image
+      ? `<img class="product-image"
+          src="${escapeHTML(product.image)}"
+          alt="${escapeHTML(product.name)}"
+          onerror="this.outerHTML='<div class=&quot;image-placeholder&quot;>Image unavailable</div>'">`
+      : `<div class="image-placeholder">Add product photo</div>`;
+
+    const prices = product.storage.map(([storage, price]) =>
+      `<div>${escapeHTML(storage)} — ${
+        price > 0 ? money(price) : "Price not set"
+      }</div>`
+    ).join("");
+
+    const storageOptions = product.storage.map(([storage, price], i) =>
+      `<option value="${i}">
+        ${escapeHTML(storage)}${
+          price > 0 ? " — " + money(price) : " — Set price"
+        }
+      </option>`
+    ).join("");
+
+    const colorOptions = product.colors.map(color =>
+      `<option value="${escapeHTML(color)}">
+        ${escapeHTML(color)}
+      </option>`
+    ).join("");
+
+    const card = document.createElement("article");
+    card.className = "product";
+
+    card.innerHTML = `
+      ${imageHTML}
+      <h3>${escapeHTML(product.name)}</h3>
+      <div class="price-list">${prices}</div>
+
+      <div class="colors">
+        <strong>Colors:</strong>
+        ${product.colors.map(escapeHTML).join(", ")}
+      </div>
+
+      <label for="storage-${key}">Storage</label>
+      <select id="storage-${key}">${storageOptions}</select>
+
+      <label for="color-${key}">Color</label>
+      <select id="color-${key}">${colorOptions}</select>
+
+      <div class="quantity">
+        <button type="button"
+          onclick="changeProductQty('${key}', -1)">−</button>
+        <span id="qty-${key}">${quantities[key]}</span>
+        <button type="button"
+          onclick="changeProductQty('${key}', 1)">+</button>
+      </div>
+
+      <button class="add-btn" type="button"
+        onclick="addToCart('${group}', ${index}, '${key}')">
+        🛒 Add to Cart
+      </button>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+// PRODUCT QUANTITY
+function changeProductQty(key, amount) {
+  quantities[key] = Math.max(1, (quantities[key] || 1) + amount);
+
+  const display = document.getElementById("qty-" + key);
+  if (display) {
+    display.textContent = quantities[key];
+  }
+}
+
+// ADD TO CART
+function addToCart(group, index, key) {
+  const product = brandNew[index];
+
+  const storageIndex = Number(
+    document.getElementById("storage-" + key).value
+  );
+
+  const color = document.getElementById("color-" + key).value;
+  const [storage, price] = product.storage[storageIndex];
+
+  if (!Number.isSafeInteger(price) || price <= 0) {
+    document.getElementById("message").textContent =
+      "Please set a valid price for this storage option.";
+    return;
+  }
+
+  const cartKey = `${group}-${index}-${storage}-${color}`;
+  const existing = cart.find(item => item.cartKey === cartKey);
+
+  if (existing) {
+    existing.quantity += quantities[key] || 1;
+  } else {
+    cart.push({
+      cartKey,
+      name: product.name,
+      image: product.image,
+      storage,
+      color,
+      price,
+      quantity: quantities[key] || 1
+    });
+  }
+
+  document.getElementById("message").textContent = "";
+  renderCart();
+}
+
+// CART TOTAL
+function getTotal() {
+  return cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+}
+
+// DISPLAY CART
+function renderCart() {
+  const container = document.getElementById("cart-items");
+  container.innerHTML = "";
+
+  if (!cart.length) {
+    container.innerHTML =
+      '<div class="empty">Your cart is empty. Choose an iPhone to get started.</div>';
+  }
+
+  cart.forEach((item, index) => {
+    const row = document.createElement("div");
+    row.className = "cart-item";
+
+    const image = item.image
+      ? `<img src="${escapeHTML(item.image)}" alt="">`
+      : `<div style="width:48px;height:48px;background:white;
+          border-radius:6px;display:grid;place-items:center">📱</div>`;
+
+    row.innerHTML = `
+      ${image}
+
+      <div class="cart-info">
+        <strong>${escapeHTML(item.name)}</strong>
+        <small>${escapeHTML(item.storage)} · ${escapeHTML(item.color)}</small>
+        <small>${money(item.price)} each</small>
+
+        <div class="cart-controls">
+          <button type="button"
+            onclick="changeCartQty(${index}, -1)">−</button>
+          <span>${item.quantity}</span>
+          <button type="button"
+            onclick="changeCartQty(${index}, 1)">+</button>
+          <button class="remove" type="button"
+            onclick="removeItem(${index})">Remove</button>
+        </div>
+      </div>
+
+      <strong style="font-size:11px;white-space:nowrap">
+        ${money(item.price * item.quantity)}
+      </strong>
+    `;
+
+    container.appendChild(row);
+  });
+
+  document.getElementById("cart-count").textContent =
+    cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  document.getElementById("cart-total").textContent = money(getTotal());
+
+  calculateChange();
+}
+
+// CART CONTROLS
+function changeCartQty(index, amount) {
+  cart[index].quantity += amount;
+
+  if (cart[index].quantity <= 0) {
+    cart.splice(index, 1);
+  }
+
+  renderCart();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  renderCart();
+}
+
+function goToCart() {
+  document.getElementById("cart").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+// PAYMENT AND CHANGE
+function calculateChange() {
+  const input = document.getElementById("payment");
+  const result = document.getElementById("change-result");
+  const message = document.getElementById("message");
+  const raw = input.value;
+
+  if (raw.trim() === "") {
+    result.textContent = "Change: ₱0.00";
+    message.textContent = "";
+    return null;
+  }
+
+  const cash = Number(raw);
+
+  if (!Number.isFinite(cash) || cash < 0) {
+    result.textContent = "Change: —";
+    message.textContent = "Enter a valid cash amount.";
+    return null;
+  }
+
+  const cashCents = Math.round(cash * 100);
+  const total = getTotal();
+
+  if (cashCents < total) {
+    result.textContent = "Change: —";
+    message.textContent = "Short by " + money(total - cashCents) + ".";
+    return null;
+  }
+
+  result.textContent = "Change: " + money(cashCents - total);
+  message.textContent = "Payment is sufficient.";
+
+  return cashCents - total;
+}
+
+// RECEIPT VALIDATION
+function prepareReceipt() {
+  const customer =
+    document.getElementById("customer-name").value.trim();
+
+  const date = document.getElementById("customer-date").value;
+  const paymentValue =
+    document.getElementById("payment").value.trim();
+
+  if (!cart.length) {
+    document.getElementById("message").textContent =
+      "Add at least one item.";
+    return false;
+  }
+
+  if (!customer) {
+    document.getElementById("message").textContent =
+      "Enter the customer name.";
+    document.getElementById("customer-name").focus();
+    return false;
+  }
+
+  if (!date) {
+    document.getElementById("message").textContent =
+      "Select the transaction date.";
+    document.getElementById("customer-date").focus();
+    return false;
+  }
+
+  if (paymentValue === "") {
+    document.getElementById("message").textContent =
+      "Enter the cash received.";
+    document.getElementById("payment").focus();
+    return false;
+  }
+
+  const change = calculateChange();
+
+  if (change === null) {
+    return false;
+  }
+
+  const cashCents = Math.round(Number(paymentValue) * 100);
+
+  document.getElementById("receiptCustomer").textContent =
+    "Customer: " + customer;
+
+  document.getElementById("receiptDate").textContent =
+    "Date: " + date;
+
+  document.getElementById("receiptTotal").textContent =
+    money(getTotal());
+
+  document.getElementById("receiptCash").textContent =
+    money(cashCents);
+
+  document.getElementById("receiptChange").textContent =
+    money(change);
+
+  const receiptItems = document.getElementById("receiptItems");
+  receiptItems.innerHTML = "";
+
+  cart.forEach(item => {
+    const line = document.createElement("div");
+    line.className = "receipt-item";
+
+    const name = document.createElement("div");
+    name.className = "receipt-item-name";
+    name.textContent = item.name;
+
+    const detail = document.createElement("div");
+    detail.textContent = `${item.storage} / ${item.color}`;
+
+    const amount = document.createElement("div");
+    amount.className = "receipt-row";
+
+    const quantity = document.createElement("span");
+    quantity.textContent =
+      `${item.quantity} x ${money(item.price)}`;
+
+    const subtotal = document.createElement("span");
+    subtotal.textContent =
+      money(item.price * item.quantity);
+
+    amount.append(quantity, subtotal);
+    line.append(name, detail, amount);
+    receiptItems.appendChild(line);
+  });
+
+  return true;
+}
+
+// PRINT RECEIPT
+function printReceipt() {
+  if (!prepareReceipt()) return;
+  window.print();
+}
+
+// CLEAR ORDER
+function clearOrder() {
+  if (!confirm(
+    "Clear all items, customer details, and payment?"
+  )) {
+    return;
+  }
+
+  cart = [];
+  quantities = {};
+
+  document.getElementById("customer-name").value = "";
+  document.getElementById("customer-date").value = "";
+  document.getElementById("payment").value = "";
+
+  document.getElementById("change-result").textContent =
+    "Change: ₱0.00";
+
+  document.getElementById("message").textContent = "";
+
+  renderProducts();
+  renderCart();
+
+  document.getElementById("receiptCustomer").textContent = "";
+  document.getElementById("receiptDate").textContent = "";
+  document.getElementById("receiptItems").innerHTML = "";
+  document.getElementById("receiptTotal").textContent = "";
+  document.getElementById("receiptCash").textContent = "";
+  document.getElementById("receiptChange").textContent = "";
+}
+
+// SET TODAY'S DATE
+document.getElementById("customer-date").value =
+  new Date().toLocaleDateString("en-CA");
+
+// INITIAL DISPLAY
+renderProducts();
+renderCart();
+</script>
+
+</body>
+</html>
